@@ -1,0 +1,6 @@
+.custom-side-bar {
+  width: 17rem;
+  position: sticky;
+  top: 56px;
+  height: calc(100vh - 56px);
+}

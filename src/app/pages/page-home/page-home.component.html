@@ -1,6 +1,9 @@
-<div class="container">
-  <h1 class="title">Plantdex</h1>
-  <div class="container-plants">
+<div class="d-flex">
+  <app-filter-side-bar
+    [categoriesToDisplay]="categoriesToSend"
+    (categoriesToFilter)="filterPlantsByCategories($event)"
+  ></app-filter-side-bar>
+  <div class="container-plants p-4">
     <app-card-plant
       *ngFor="let plantData of plantsToDisplay"
       [plant]="plantData"
