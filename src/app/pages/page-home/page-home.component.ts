@@ -47,29 +47,39 @@ export class PageHomeComponent implements OnInit {
 
   filterPlantsByCategories(categories: string[]) {
     this.globalSelectedCategories = [...categories];
-    this.genericFilter();
+    this.plantsToDisplay = this.genericFilter(
+      this.allPlants,
+      this.globalSelectedCategories,
+      this.globalSearchUser
+    );
   }
 
   onSearchUser(search: string) {
     this.globalSearchUser = search;
-    this.genericFilter();
+    this.plantsToDisplay = this.genericFilter(
+      this.allPlants,
+      this.globalSelectedCategories,
+      this.globalSearchUser
+    );
   }
 
-  genericFilter() {
-    let filteredPlants = [...this.allPlants];
+  genericFilter(
+    allPlants: Plant[],
+    selectedCategories: string[],
+    searchUser: string
+  ) {
+    let filteredPlants = [...allPlants];
 
-    if (this.globalSelectedCategories.length !== 0) {
+    if (selectedCategories.length !== 0) {
       filteredPlants = filteredPlants.filter((x) =>
-        this.globalSelectedCategories.includes(x.categorie)
+        selectedCategories.includes(x.categorie)
       );
     }
 
     filteredPlants = filteredPlants.filter((x) =>
-      x.nom
-        .toLocaleLowerCase()
-        .includes(this.globalSearchUser.toLocaleLowerCase())
+      x.nom.toLocaleLowerCase().includes(searchUser.toLocaleLowerCase())
     );
 
-    this.plantsToDisplay = [...filteredPlants];
+    return filteredPlants;
   }
 }
