@@ -1,5 +1,7 @@
-<div class="card" style="width: 18rem">
-  <img [src]="plant.image" class="card-img-top" [alt]="plant.nom" />
+<div class="card">
+  <div class="container-img-plant">  
+    <img [src]="plant.image" class="card-img-top" [alt]="plant.nom" />
+  </div>
   <div class="card-body">
     <h5 class="card-title text-truncate" [title]="plant.nom">
       {{ plant.nom }}

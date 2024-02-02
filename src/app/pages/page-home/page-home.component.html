@@ -11,10 +11,11 @@
       <app-search-bar></app-search-bar>
     </div>
     <div class="container-plants">
-      <app-card-plant
-        *ngFor="let plantData of plantsToDisplay"
-        [plant]="plantData"
-      ></app-card-plant>
+        <app-card-plant 
+          class="one-plant" 
+          *ngFor="let plantData of plantsToDisplay" 
+          [plant]="plantData"
+        ></app-card-plant>
     </div>
   </div>
 

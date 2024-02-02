@@ -1,0 +1,9 @@
+.container-img-plant {
+  text-align: center;
+  height: 15rem;
+}
+
+img {
+  max-height: 100%;
+  width: auto;
+}
