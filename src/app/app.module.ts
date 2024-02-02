@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { HttpClientModule } from '@angular/common/http';
 import { CardPlantComponent } from './components/card-plant/card-plant.component';
 import { FilterSideBarComponent } from './components/filter-side-bar/filter-side-bar.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FilterSideBarComponent } from './components/filter-side-bar/filter-side
     PageNotFoundComponent,
     CardPlantComponent,
     FilterSideBarComponent,
+    SearchBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

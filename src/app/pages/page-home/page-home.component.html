@@ -1,12 +1,21 @@
 <div class="d-flex">
+  
   <app-filter-side-bar
     [categoriesToDisplay]="categoriesToSend"
     (categoriesToFilter)="filterPlantsByCategories($event)"
   ></app-filter-side-bar>
-  <div class="container-plants p-4">
-    <app-card-plant
-      *ngFor="let plantData of plantsToDisplay"
-      [plant]="plantData"
-    ></app-card-plant>
+
+  <div class="">
+    
+    <div class="container-search-bar">
+      <app-search-bar></app-search-bar>
+    </div>
+    <div class="container-plants">
+      <app-card-plant
+        *ngFor="let plantData of plantsToDisplay"
+        [plant]="plantData"
+      ></app-card-plant>
+    </div>
   </div>
+
 </div>
