@@ -11,6 +11,8 @@ export class PageHomeComponent implements OnInit {
   plantsToDisplay: Plant[] = [];
   allPlants: Plant[] = [];
   categoriesToSend: string[] = [];
+  globalSearchUser: string = '';
+  globalSelectedCategories: string[] = [];
 
   constructor(private plantsService: PlantsService) {}
 
@@ -44,15 +46,30 @@ export class PageHomeComponent implements OnInit {
   }
 
   filterPlantsByCategories(categories: string[]) {
-    /**
-     * Implémentation du filtre des
-     * plantes en fonction de leur categorie
-     * .includes() et .filter()
-     * const pets = ['cat', 'dog', 'bat'];
-      console.log(pets.includes('cat'));
-     */
-    this.plantsToDisplay = this.allPlants.filter((x) =>
-      categories.includes(x.categorie)
+    this.globalSelectedCategories = [...categories];
+    this.genericFilter();
+  }
+
+  onSearchUser(search: string) {
+    this.globalSearchUser = search;
+    this.genericFilter();
+  }
+
+  genericFilter() {
+    let filteredPlants = [...this.allPlants];
+
+    if (this.globalSelectedCategories.length !== 0) {
+      filteredPlants = filteredPlants.filter((x) =>
+        this.globalSelectedCategories.includes(x.categorie)
+      );
+    }
+
+    filteredPlants = filteredPlants.filter((x) =>
+      x.nom
+        .toLocaleLowerCase()
+        .includes(this.globalSearchUser.toLocaleLowerCase())
     );
+
+    this.plantsToDisplay = [...filteredPlants];
   }
 }
