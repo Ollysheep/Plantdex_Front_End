@@ -8,4 +8,5 @@ import { Plant } from '../../models/plant';
 })
 export class CardPlantComponent {
   @Input() plant!: Plant;
+  @Input() plantId: number = 0;
 }

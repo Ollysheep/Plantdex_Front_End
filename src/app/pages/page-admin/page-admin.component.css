@@ -1,0 +1,24 @@
+.col-img {
+    width: 100px;
+}
+
+.col-img img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.center-container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 5rem;
+}
+
+.edit-delete-button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}

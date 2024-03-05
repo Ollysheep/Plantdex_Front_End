@@ -1,0 +1,34 @@
+<form (ngSubmit)="onSubmitForm()" [formGroup]="formPlant">
+    <div class="mb-3">
+        <label for="input-plant-name" class="form-label">Nom</label>
+        <input type="text" formControlName="nom" id="input-plant-name" class="form-control" [ngClass]="{
+        'is-invalid':
+          formPlant.controls['nom'].touched && formPlant.controls['nom'].invalid
+      }" aria-labelledby="invalid-feedback-input-name" />
+        <div class="invalid-feedback" id="invalid-feedback-input-name">
+            Ce champ est requis
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="input-plant-sun" class="form-label">Ensoleillement</label>
+        <input type="text" formControlName="soleil" id="input-plant-sun" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="input-plant-watering" class="form-label">Arrosage</label>
+        <input type="text" formControlName="arrosage" id="input-plant-watering" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="input-plant-category" class="form-label">Catégorie</label>
+        <input type="text" formControlName="categorie" id="input-plant-category" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="input-plant-img" class="form-label">Image</label>
+        <input type="text" formControlName="image" id="input-plant-img" class="form-control" />
+    </div>
+
+    <button class="btn btn-success" [disabled]="formPlant.invalid" type="submit">
+        Créer la plante
+    </button>
+</form>

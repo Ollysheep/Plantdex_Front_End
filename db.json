@@ -1,30 +1,6 @@
 {
   "plants": [
     {
-      "id": 952438,
-      "nom": "Anthurium, pot D12cm",
-      "soleil": "moyen",
-      "arrosage": 2,
-      "categorie": "plantes fleuries",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0952000/952438_003.jpg"
-    },
-    {
-      "id": 77390,
-      "nom": "Anthurium: Pot 17cm petit modèle - Coloris variables",
-      "soleil": "moyen",
-      "arrosage": 2,
-      "categorie": "plantes fleuries",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0077000/77390_010.jpg"
-    },
-    {
-      "id": 910762,
-      "nom": "Anthurium elipticum 'Jungle Bush' pot déco foncé D24cm",
-      "soleil": "moyen",
-      "arrosage": 2,
-      "categorie": "plantes fleuries",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0910000/910762_001.jpg"
-    },
-    {
       "id": 801427,
       "nom": "Strelitzia Nicolai : D.21-H.75",
       "soleil": "moyen",
@@ -201,30 +177,6 @@
       "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0067000/67544_014.jpg"
     },
     {
-      "id": 951252,
-      "nom": "Orchidée phalaenopsis, palm tree",
-      "soleil": "peu",
-      "arrosage": 3,
-      "categorie": "orchidés",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0951000/951252_001.jpg"
-    },
-    {
-      "id": 951250,
-      "nom": "Orchidée phalaenopsis, arceau",
-      "soleil": "peu",
-      "arrosage": 3,
-      "categorie": "orchidés",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0951000/951250_001.jpg"
-    },
-    {
-      "id": 951253,
-      "nom": "Orchidée phalaenopsis, arceau",
-      "soleil": "peu",
-      "arrosage": 3,
-      "categorie": "orchidés",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0951000/951253_001.jpg"
-    },
-    {
       "id": 953486,
       "nom": "Phalaenopsis 'Gold Las Vegas':3 tiges pot D12 cm",
       "soleil": "peu",
@@ -239,14 +191,6 @@
       "arrosage": 3,
       "categorie": "orchidés",
       "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0504000/504939_001.jpg"
-    },
-    {
-      "id": 951251,
-      "nom": "Orchidée phalaenopsis, spirale",
-      "soleil": "peu",
-      "arrosage": 3,
-      "categorie": "orchidés",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0951000/951251_001.jpg"
     },
     {
       "id": 750197,

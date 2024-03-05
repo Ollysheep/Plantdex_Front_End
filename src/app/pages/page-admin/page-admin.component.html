@@ -1,1 +1,48 @@
-<p>page-admin works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mt-4">Page Admin plantdex</h1>
+
+            <div class="d-flex justify-content-end mb-4">
+                <button routerLink="/admin/new-plant" class="btn btn-success">Ajouter une plante</button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Catégorie</th>
+                            <th scope="col">Besoin d'ensoleillement</th>
+                            <th scope="col">Besoin d'arrosage</th>
+                            <th scope="col">Modifier</th>
+                            <th scope="col">Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let plant of plantsToDisplay">
+                            <td>{{ plant.nom }}</td>
+                            <td class="col-img">
+                                <img src="{{ plant.image }}" alt="Image {{ plant.nom }}" class="img-thumbnail" />
+                            </td>
+                            <td>{{ plant.categorie }}</td>
+                            <td>{{ plant.soleil }}</td>
+                            <td>{{ plant.arrosage }}</td>
+                            <td>
+                                <button class="btn btn-info" routerLink="/admin/plant/edit/{{ plant.id }}">
+                                    <app-icon [iconName]="'pencil'" [iconColor]="'#fff'" [iconSize]="1.5"></app-icon>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="onClickDeletePlant(plant.id)">
+                                    <app-icon [iconName]="'trash'" [iconColor]="'#fff'" [iconSize]="1.5"></app-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

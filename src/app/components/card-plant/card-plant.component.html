@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="container-img-plant">  
+  <div class="container-img-plant">
     <img [src]="plant.image" class="card-img-top" [alt]="plant.nom" />
   </div>
   <div class="card-body">
@@ -7,6 +7,28 @@
       {{ plant.nom }}
     </h5>
     <p class="card-text">{{ plant.categorie }}</p>
-    <a href="#" class="btn btn-success">Je l'ai !</a>
+
+    <div>
+      <app-icon [iconName]="'heart'" [iconColor]="'#e35d6a'" [iconSize]="1.5"
+        style="margin-left: 15px; margin-right: 5px;"></app-icon>
+      <app-icon [iconName]="'heart-fill'" [iconColor]="'#e35d6a'" [iconSize]="1.5"
+        style="margin-left: 5px; margin-right: 5px;"></app-icon>
+      <app-icon [iconName]="'droplet'" [iconColor]="'rgb(51, 10, 232)'" [iconSize]="1.5"
+        style="float: right; margin-left: 5px;"></app-icon>
+      <app-icon [iconName]="'droplet-fill'" [iconColor]="'rgb(51, 10, 232)'" [iconSize]="1.5"
+        style="float: right; margin-left: 5px;"></app-icon>
+      <app-icon [iconName]="'sun'" [iconColor]="'orange'" [iconSize]="1.5"
+        style="float: right; margin-left: 5px;"></app-icon>
+      <app-icon [iconName]="'sun-fill'" [iconColor]="'orange'" [iconSize]="1.5"
+        style="float: right; margin-left: 5px;"></app-icon>
+    </div>
+
+    <a href="#" class="btn btn-success"><app-icon [iconName]="'check-circle'" [iconSize]="1"></app-icon> Je l'ai !</a>
+
+    <button [routerLink]="'plant/details/' + plantId" class="btn btn-success" style="float: right;">
+      <app-icon [iconName]="'plus-circle'" [iconSize]="1"></app-icon> de détails
+    </button>
+
+
   </div>
 </div>
