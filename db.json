@@ -1,12 +1,12 @@
 {
   "plants": [
     {
-      "id": 952438,
       "nom": "Anthurium, pot D12cm",
       "soleil": "moyen",
-      "arrosage": 2,
+      "arrosage": "2",
       "categorie": "plantes fleuries",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0952000/952438_003.jpg"
+      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0952000/952438_003.jpg",
+      "id": 952438
     },
     {
       "id": 77390,
