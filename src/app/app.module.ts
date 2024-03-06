@@ -23,6 +23,7 @@ import { PagePlantDetailsComponent } from './pages/page-plant-details/page-plant
 import { PageEditPlantComponent } from './pages/page-edit-plant/page-edit-plant.component';
 import { FormEditPlantComponent } from './components/form-edit-plant/form-edit-plant.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { PlantsService } from './services/plants.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { BrowserModule } from '@angular/platform-browser';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [PlantsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

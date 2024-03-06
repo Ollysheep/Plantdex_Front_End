@@ -1,31 +1,49 @@
 <form (ngSubmit)="onSubmitForm()" [formGroup]="formPlant">
   <div class="mb-3">
     <label for="input-plant-name" class="form-label">Nom</label>
-    <input type="text" formControlName="nom" id="input-plant-name" class="form-control" [ngClass]="{
-        'is-invalid':
-          formPlant.controls['nom'].touched && formPlant.controls['nom'].invalid
-      }" aria-labelledby="invalid-feedback-input-name" />
+    <input type="text" formControlName="nom" id="input-plant-name" class="form-control" [ngModel]="plantToEdit?.nom"
+      [ngClass]="{'is-invalid': formPlant.controls['nom'].touched && formPlant.controls['nom'].invalid}"
+      aria-labelledby="invalid-feedback-input-name" />
     <div class="invalid-feedback" id="invalid-feedback-input-name">
       Ce champ est requis
     </div>
   </div>
 
   <div class="mb-3">
-    <label for="input-plant-sun" class="form-label">Ensoleillement</label>
-    <input type="text" formControlName="soleil" id="input-plant-sun" class="form-control" />
+    <label for="select-plant-sun" class="form-label">Ensoleillement</label>
+    <select formControlName="soleil" id="select-plant-sun" class="form-select" [ngModel]="plantToEdit?.soleil">
+      <option value="peu">Peu</option>
+      <option value="moyen">Moyen</option>
+      <option value="beaucoup">Beaucoup</option>
+    </select>
   </div>
 
   <div class="mb-3">
-    <label for="input-plant-watering" class="form-label">Arrosage</label>
-    <input type="text" formControlName="arrosage" id="input-plant-watering" class="form-control" />
+    <label for="select-plant-watering" class="form-label">Arrosage</label>
+    <select formControlName="arrosage" id="select-plant-watering" class="form-select" [ngModel]="plantToEdit?.arrosage">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
   </div>
+
   <div class="mb-3">
-    <label for="input-plant-category" class="form-label">Catégorie</label>
-    <input type="text" formControlName="categorie" id="input-plant-category" class="form-control" />
+    <label for="select-plant-category" class="form-label">Catégorie</label>
+    <select formControlName="categorie" id="select-plant-category" class="form-select"
+      [ngModel]="plantToEdit?.categorie">
+      <option value="plantes fleuries">Plantes Fleuries</option>
+      <option value="orchidées">Orchidées</option>
+      <option value="cactus et plantes grasses">Cactus et Plantes Grasses</option>
+      <option value="bonsaïs">Bonsaïs</option>
+      <option value="plantes vertes">Plantes Vertes</option>
+      <option value="palmiers d'intérieur">Palmiers d'Intérieur</option>
+    </select>
   </div>
+
   <div class="mb-3">
     <label for="input-plant-img" class="form-label">Image</label>
-    <input type="text" formControlName="image" id="input-plant-img" class="form-control" />
+    <input type="text" formControlName="image" id="input-plant-img" class="form-control"
+      [ngModel]="plantToEdit?.image" />
   </div>
 
   <button class="btn btn-success" [disabled]="formPlant.invalid" type="submit">

@@ -9,12 +9,22 @@ import { Plant } from '../../models/plant';
 })
 export class FormEditPlantComponent implements OnInit {
   @Input() plantToEdit: Plant | null = null;
+  @Output() submitFormPlant = new EventEmitter<Plant>();
 
   formPlant!: FormGroup;
-  @Output() submitFormPlant = new EventEmitter<Plant>();
 
   ngOnInit(): void {
     this.initForm();
+
+    if (this.plantToEdit) {
+      this.formPlant.patchValue({
+        nom: this.plantToEdit.nom,
+        soleil: this.plantToEdit.soleil,
+        arrosage: this.plantToEdit.arrosage,
+        categorie: this.plantToEdit.categorie,
+        image: this.plantToEdit.image,
+      });
+    }
   }
 
   initForm() {

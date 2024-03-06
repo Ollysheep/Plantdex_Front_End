@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PlantsService {
-  constructor(private http: HttpClient, private plantsService: PlantsService) {}
+  constructor(private http: HttpClient) {}
 
   getPlants(): Observable<Plant[]> {
     return this.http.get<Plant[]>('http://localhost:3000/plants');
@@ -27,7 +27,7 @@ export class PlantsService {
   }
 
   updatePlant(plantId: number, updatedPlant: Plant): Observable<any> {
-    const apiUrl = `votre_url_api/plants/${plantId}`;
+    const apiUrl = `http://localhost:3000/plants/${plantId}`;
     return this.http.put(apiUrl, updatedPlant);
   }
 }
