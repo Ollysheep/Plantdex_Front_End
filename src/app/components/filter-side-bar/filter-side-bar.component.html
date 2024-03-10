@@ -6,15 +6,28 @@
   <div class="px-3">
     <p class="fs-5 fw-semibold">Catégorie</p>
     <div class="form-check" *ngFor="let category of categoriesToDisplay">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        value="{{ category }}"
-        id="{{ category }}"
-        (change)="onCheckedCategories($event)"
-      />
+      <input class="form-check-input" type="checkbox" value="{{ category }}" id="{{ category }}"
+        (change)="onCheckedCategories($event)" />
       <label class="form-check-label" for="{{ category }}">
         {{ category }}
+      </label>
+    </div>
+
+    <p class="fs-5 fw-semibold mt-3">Ensoleillement</p>
+    <div class="form-check" *ngFor="let sunlightLevel of sunlightLevelsToDisplay">
+      <input class="form-check-input" type="checkbox" value="{{ sunlightLevel }}" id="{{ sunlightLevel }}"
+        (change)="onCheckedSunlightLevels($event)" />
+      <label class="form-check-label" for="{{ sunlightLevel }}">
+        {{ sunlightLevel }}
+      </label>
+    </div>
+
+    <p class="fs-5 fw-semibold mt-3">Arrosage</p>
+    <div class="form-check" *ngFor="let watering of wateringToDisplay">
+      <input class="form-check-input" type="checkbox" value="{{ watering }}" id="{{ watering }}"
+        (change)="onCheckedWatering($event)" />
+      <label class="form-check-label" for="{{ watering }}">
+        {{ watering }}
       </label>
     </div>
   </div>

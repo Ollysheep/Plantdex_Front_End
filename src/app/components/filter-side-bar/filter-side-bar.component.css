@@ -4,3 +4,14 @@
   top: 56px;
   height: calc(100vh - 56px);
 }
+
+.form-check-input {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #4e4d4d;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.form-check-input:checked {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  border: 2px solid #4e4d4d;
+}

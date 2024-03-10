@@ -1,6 +1,10 @@
 <div class="d-flex">
-  <app-filter-side-bar [categoriesToDisplay]="categoriesToSend"
-    (categoriesToFilter)="filterPlantsByCategories($event)"></app-filter-side-bar>
+  <div class="filter-container d-flex flex-column">
+    <app-filter-side-bar [categoriesToDisplay]="categoriesToSend"
+      (categoriesToFilter)="filterPlantsByCategories($event)" [sunlightLevelsToDisplay]="sunlightLevelsToSend"
+      (sunlightLevelsToFilter)="filterPlantsBySunlightLevels($event)" [wateringToDisplay]="wateringToSend"
+      (wateringToFilter)="filterPlantsByWatering($event)"></app-filter-side-bar>
+  </div>
 
   <div class="w-100">
     <div class="container-search-bar">

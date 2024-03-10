@@ -3,7 +3,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   /* gap: 2rem; */
-  padding: 1.5rem; /* p-4 de bootstrap*/
+  padding: 1.5rem;
+  /* p-4 de bootstrap*/
   padding-top: 0;
 }
 
@@ -13,10 +14,11 @@
 }
 
 .container-search-bar {
-  padding: 1.5rem; /* p-4 de bootstrap*/
+  padding: 1.5rem;
+  /* p-4 de bootstrap*/
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
   .one-plant {
     width: 23%;
   }

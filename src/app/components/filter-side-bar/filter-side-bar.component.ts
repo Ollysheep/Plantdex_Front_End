@@ -7,8 +7,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class FilterSideBarComponent {
   @Input() categoriesToDisplay!: string[];
-  checkedCategories: string[] = [];
+  @Input() sunlightLevelsToDisplay!: string[]; // Ajout de la liste des niveaux d'ensoleillement
+  @Input() wateringToDisplay!: string[]; // Ajout de la liste des niveaux d'arrosage
+
   @Output() categoriesToFilter = new EventEmitter<string[]>();
+  @Output() sunlightLevelsToFilter = new EventEmitter<string[]>(); // Émetteur pour les niveaux d'ensoleillement
+  @Output() wateringToFilter = new EventEmitter<string[]>(); // Émetteur pour les niveaux d'arrosage
+
+  checkedCategories: string[] = [];
+  checkedSunlightLevels: string[] = []; // Tableau pour les niveaux d'ensoleillement
+  checkedWatering: string[] = []; // Tableau pour les niveaux d'arrosage
 
   onCheckedCategories(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -42,5 +50,52 @@ export class FilterSideBarComponent {
     }
 
     this.categoriesToFilter.emit(this.checkedCategories);
+  }
+
+  // Fonction similaire pour les niveaux d'ensoleillement
+  onCheckedSunlightLevels(event: Event) {
+    const target = event.target as HTMLInputElement;
+
+    if (target.checked) {
+      if (
+        this.checkedSunlightLevels.length ===
+        this.sunlightLevelsToDisplay.length
+      ) {
+        this.checkedSunlightLevels = [];
+      }
+      this.checkedSunlightLevels.push(target.value);
+    } else {
+      this.checkedSunlightLevels = this.checkedSunlightLevels.filter(
+        (level) => level !== target.value
+      );
+
+      if (this.checkedSunlightLevels.length === 0) {
+        this.checkedSunlightLevels = [...this.sunlightLevelsToDisplay];
+      }
+    }
+
+    this.sunlightLevelsToFilter.emit(this.checkedSunlightLevels);
+  }
+
+  // Fonction similaire pour les niveaux d'arrosage
+  onCheckedWatering(event: Event) {
+    const target = event.target as HTMLInputElement;
+
+    if (target.checked) {
+      if (this.checkedWatering.length === this.wateringToDisplay.length) {
+        this.checkedWatering = [];
+      }
+      this.checkedWatering.push(target.value);
+    } else {
+      this.checkedWatering = this.checkedWatering.filter(
+        (level) => level !== target.value
+      );
+
+      if (this.checkedWatering.length === 0) {
+        this.checkedWatering = [...this.wateringToDisplay];
+      }
+    }
+
+    this.wateringToFilter.emit(this.checkedWatering);
   }
 }

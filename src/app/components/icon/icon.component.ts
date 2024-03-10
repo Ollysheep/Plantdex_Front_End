@@ -36,7 +36,8 @@ export class IconComponent {
     | 'trash'
     | 'plus-circle'
     | 'check-circle'
-    | 'pencil' = 'heart';
+    | 'pencil'
+    | 'x-circle' = 'heart';
 
   @Input() iconColor = 'yellow';
   @Input() iconSize: number = 2;
