@@ -24,7 +24,8 @@
                         <tr *ngFor="let plant of plantsToDisplay">
                             <td>{{ plant.nom }}</td>
                             <td class="col-img">
-                                <img src="{{ plant.image }}" alt="Image {{ plant.nom }}" class="img-thumbnail" />
+                                <img [src]="plant.image" (error)="handleImageError()" [alt]="'Image ' + plant.nom"
+                                    class="img-thumbnail" />
                             </td>
                             <td>{{ plant.categorie }}</td>
                             <td>{{ plant.soleil }}</td>

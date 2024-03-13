@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantsService } from '../../services/plants.service';
 import { Plant } from '../../models/plant';
+import { ImageErrorHandlerService } from '../../services/ImageErrorHandler.service';
 
 @Component({
   selector: 'app-page-admin',
@@ -9,13 +10,20 @@ import { Plant } from '../../models/plant';
 })
 export class PageAdminComponent implements OnInit {
   plantsToDisplay!: Plant[];
-  constructor(private plantsService: PlantsService) {}
+  constructor(
+    private plantsService: PlantsService,
+    private imageErrorHandlerService: ImageErrorHandlerService
+  ) {}
 
   ngOnInit(): void {
     this.plantsService.getPlants().subscribe((plants) => {
       console.log(plants);
       this.plantsToDisplay = [...plants];
     });
+  }
+
+  handleImageError(): void {
+    this.imageErrorHandlerService.handleImageError(event);
   }
 
   onClickDeletePlant(plantId: number) {

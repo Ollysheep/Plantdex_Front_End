@@ -24,6 +24,7 @@ import { PageEditPlantComponent } from './pages/page-edit-plant/page-edit-plant.
 import { FormEditPlantComponent } from './components/form-edit-plant/form-edit-plant.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { PlantsService } from './services/plants.service';
+import { ImageErrorHandlerService } from './services/ImageErrorHandler.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { PlantsService } from './services/plants.service';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [PlantsService],
+  providers: [PlantsService, ImageErrorHandlerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

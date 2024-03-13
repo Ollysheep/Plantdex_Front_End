@@ -1,34 +1,44 @@
 <div class="card">
-  <div class="container-img-plant">
-    <img [src]="plant.image" class="card-img-top" [alt]="plant.nom" />
+  <div
+    style="display: flex; justify-content: space-between; padding-top: 0.75rem; padding-right: 0.75rem; padding-left: 0.75rem;">
+    <div>
+      <app-icon [iconName]="'heart'" [iconColor]="'#e35d6a'" [iconSize]="1.5"></app-icon>
+      <app-icon [iconName]="'heart-fill'" [iconColor]="'#e35d6a'" [iconSize]="1.5"></app-icon>
+    </div>
+    <a href="#" class="btn btn-success">
+      <app-icon [iconName]="'check-circle'" [iconSize]="1"></app-icon> Je l'ai !
+    </a>
   </div>
-  <div class="card-body">
-    <h5 class="card-title text-truncate" [title]="plant.nom">
-      {{ plant.nom }}
-    </h5>
+
+
+  <div class="container-img-plant">
+    <img [src]="plant.image" (error)="handleImageError()" [alt]="plant.nom" />
+  </div>
+
+
+
+  <div class="card-body" style="text-align: center;">
+    <h5 class="card-title text-truncate" [title]="plant.nom">{{ plant.nom }}</h5>
     <p class="card-text">{{ plant.categorie }}</p>
 
-    <div>
-      <app-icon [iconName]="'heart'" [iconColor]="'#e35d6a'" [iconSize]="1.5"
-        style="margin-left: 15px; margin-right: 5px;"></app-icon>
-      <app-icon [iconName]="'heart-fill'" [iconColor]="'#e35d6a'" [iconSize]="1.5"
-        style="margin-left: 5px; margin-right: 5px;"></app-icon>
-      <app-icon [iconName]="'droplet'" [iconColor]="'rgb(51, 10, 232)'" [iconSize]="1.5"
-        style="float: right; margin-left: 5px;"></app-icon>
-      <app-icon [iconName]="'droplet-fill'" [iconColor]="'rgb(51, 10, 232)'" [iconSize]="1.5"
-        style="float: right; margin-left: 5px;"></app-icon>
-      <app-icon [iconName]="'sun'" [iconColor]="'orange'" [iconSize]="1.5"
-        style="float: right; margin-left: 5px;"></app-icon>
-      <app-icon [iconName]="'sun-fill'" [iconColor]="'orange'" [iconSize]="1.5"
-        style="float: right; margin-left: 5px;"></app-icon>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <div style="text-align: left;">
+        <p class="fs-5 fw-semibold">Ensoleillement</p>
+        <ng-container *ngFor="let icon of getSunIcons(plant.soleil)">
+          <app-icon [iconName]="icon" [iconColor]="'orange'" [iconSize]="1" style="margin-left: 15px;"></app-icon>
+        </ng-container>
+      </div>
+      <div style="text-align: right;">
+        <p class="fs-5 fw-semibold">Arrosage</p>
+        <ng-container *ngFor="let icon of getWateringIcons(plant.arrosage)">
+          <app-icon [iconName]="icon" [iconColor]="'rgb(51, 10, 232)'" [iconSize]="1"
+            style="margin-left: 15px;"></app-icon>
+        </ng-container>
+      </div>
     </div>
 
-    <a href="#" class="btn btn-success"><app-icon [iconName]="'check-circle'" [iconSize]="1"></app-icon> Je l'ai !</a>
 
-    <button [routerLink]="'plant/details/' + plantId" class="btn btn-success" style="float: right;">
+    <button [routerLink]="'plant/details/' + plantId" class="btn btn-success" style="margin-top: 0.75rem;">
       <app-icon [iconName]="'plus-circle'" [iconSize]="1"></app-icon> de détails
     </button>
-
-
   </div>
-</div>
