@@ -2,8 +2,8 @@
     <div class="card w-80">
         <div class="card-body text-center">
             <h2 class="card-title">{{ plantsToDisplay.nom }}</h2>
-            <img *ngIf="plantsToDisplay.image" [src]="plantsToDisplay.image" alt="Image de la plante"
-                class="custom-img-size mb-3">
+            <img *ngIf="plantsToDisplay.image" [src]="plantsToDisplay.image" [alt]="'Image de ' + plantsToDisplay.nom"
+                (error)="handleImageError($event)" class="custom-img-size mb-3">
 
             <p class="card-text"><strong>Catégorie:</strong> {{ plantsToDisplay.categorie }}</p>
             <p class="card-text"><strong>Soleil:</strong> {{ plantsToDisplay.soleil }}</p>

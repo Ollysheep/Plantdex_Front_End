@@ -22,9 +22,9 @@ export class CardPlantComponent implements OnInit {
   getSunIcons(soleil: string): ('sun' | 'sun-fill')[] {
     switch (soleil) {
       case 'Peu':
-        return ['sun', 'sun', 'sun-fill'];
+        return ['sun-fill', 'sun', 'sun'];
       case 'Moyen':
-        return ['sun', 'sun-fill', 'sun-fill'];
+        return ['sun-fill', 'sun-fill', 'sun'];
       case 'Beaucoup':
         return ['sun-fill', 'sun-fill', 'sun-fill'];
       default:

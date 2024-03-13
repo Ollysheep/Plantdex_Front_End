@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Plant } from 'src/app/models/plant';
 import { PlantsService } from 'src/app/services/plants.service';
+import { ImageErrorHandlerService } from 'src/app/services/ImageErrorHandler.service';
 
 @Component({
   selector: 'app-page-plant-details',
@@ -14,7 +15,8 @@ export class PagePlantDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private plantsService: PlantsService
+    private plantsService: PlantsService,
+    private imageErrorHandlerService: ImageErrorHandlerService
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +35,10 @@ export class PagePlantDetailsComponent {
         },
       });
     });
+  }
+
+  // Fonction pour gérer les erreurs d'image
+  handleImageError(event: any) {
+    this.imageErrorHandlerService.handleImageError(event);
   }
 }
