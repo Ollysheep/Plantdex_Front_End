@@ -13,12 +13,12 @@ export class PageHomeComponent implements OnInit {
 
   categoriesToSend: string[] = [];
   sunlightLevelsToSend: string[] = [];
-  wateringToSend: string[] = [];
+  wateringToSend: number[] = [];
 
   globalSearchUser: string = '';
   globalSelectedCategories: string[] = [];
   globalSelectedSunlightLevels: string[] = [];
-  globalSelectedWatering: string[] = [];
+  globalSelectedWatering: number[] = [];
 
   constructor(private plantsService: PlantsService) {}
 
@@ -46,15 +46,17 @@ export class PageHomeComponent implements OnInit {
      * 2 - Supprimer les doublons de catégorie en utilisant un Set
      * 3 - Retransfromer notre Set en tableau
      */
-    const categoryArray = plants.map((x) => x.categorie);
+    const categoryArray = plants.map((plants) => plants.categorie.libelle);
     const categorySetUnique = new Set(categoryArray);
+    console.log(categorySetUnique);
+
     const categoryArrayUnique = [...categorySetUnique];
 
     return categoryArrayUnique;
   }
 
   getSunlightLevelsFromPlants(plants: Plant[]): string[] {
-    const sunlightLevelArray = plants.map((x) => x.soleil);
+    const sunlightLevelArray = plants.map((plants) => plants.soleil);
     const sunlightLevelSetUnique = new Set(sunlightLevelArray);
     const sunlightLevelArrayUnique = [...sunlightLevelSetUnique];
     console.log('Ensoleillement', sunlightLevelArrayUnique);
@@ -62,10 +64,10 @@ export class PageHomeComponent implements OnInit {
     return sunlightLevelArrayUnique;
   }
 
-  getWateringFromPlants(plants: Plant[]): string[] {
-    const wateringArray: string[] = plants.map((x) => x.arrosage);
-    const wateringSetUnique: Set<string> = new Set(wateringArray);
-    const wateringArrayUnique: string[] = [...wateringSetUnique];
+  getWateringFromPlants(plants: Plant[]): number[] {
+    const wateringArray = plants.map((plants) => plants.arrosage);
+    const wateringSetUnique = new Set(wateringArray);
+    const wateringArrayUnique: number[] = [...wateringSetUnique];
     console.log('Arrosage:', wateringArrayUnique);
 
     return wateringArrayUnique;
@@ -73,6 +75,14 @@ export class PageHomeComponent implements OnInit {
 
   filterPlantsByCategories(categories: string[]) {
     this.globalSelectedCategories = [...categories];
+    console.log('Catégories sélectionnées:', this.globalSelectedCategories);
+    this.plantsToDisplay = this.allPlants.filter((plant) => {
+      // Vérifier si au moins une catégorie est présente dans la liste sélectionnée
+      return this.globalSelectedCategories.includes(plant.categorie.libelle);
+    });
+
+    // Appliquer ensuite les autres filtres
+    // Assurez-vous que tous les appels à genericFilter fournissent les cinq arguments nécessaires.
     this.plantsToDisplay = this.genericFilter(
       this.allPlants,
       this.globalSelectedCategories,
@@ -92,8 +102,9 @@ export class PageHomeComponent implements OnInit {
     });
 
     // Appliquer ensuite les autres filtres
+    // Assurez-vous que tous les appels à genericFilter fournissent les cinq arguments nécessaires.
     this.plantsToDisplay = this.genericFilter(
-      this.plantsToDisplay,
+      this.allPlants,
       this.globalSelectedCategories,
       this.globalSelectedSunlightLevels,
       this.globalSelectedWatering,
@@ -101,16 +112,14 @@ export class PageHomeComponent implements OnInit {
     );
   }
 
-  filterPlantsByWatering(watering: string[]) {
+  filterPlantsByWatering(watering: number[]) {
     this.globalSelectedWatering = [...watering];
     console.log('Arrosage:', this.globalSelectedWatering);
 
     this.plantsToDisplay = this.allPlants.filter((plant) => {
-      // Vérifier si au moins un niveau d'arrosage est présent dans la liste sélectionnée
-      return this.globalSelectedWatering.includes(plant.arrosage);
+      return this.globalSelectedWatering.includes(plant.arrosage); // Convertir seulement si nécessaire
     });
 
-    // Appliquer ensuite les autres filtres
     this.plantsToDisplay = this.genericFilter(
       this.plantsToDisplay,
       this.globalSelectedCategories,
@@ -135,38 +144,35 @@ export class PageHomeComponent implements OnInit {
     allPlants: Plant[],
     selectedCategories: string[],
     selectedSunlightLevels: string[],
-    selectedWatering: string[],
+    selectedWatering: number[],
     searchUser: string
   ) {
+    console.log('Executing genericFilter');
     let filteredPlants = [...allPlants];
 
-    // Filtrage par catégories
-    if (selectedCategories.length !== 0) {
-      filteredPlants = filteredPlants.filter((x) =>
-        selectedCategories.includes(x.categorie)
+    if (selectedCategories.length) {
+      filteredPlants = filteredPlants.filter((plants) =>
+        selectedCategories.includes(plants.categorie.libelle)
       );
     }
 
-    // Filtrage par ensoleillement
-    if (selectedSunlightLevels.length !== 0) {
-      filteredPlants = filteredPlants.filter((x) =>
-        selectedSunlightLevels.includes(x.soleil)
+    if (selectedSunlightLevels.length) {
+      filteredPlants = filteredPlants.filter((plants) =>
+        selectedSunlightLevels.includes(plants.soleil)
       );
-      console.log('Filtré par ensoleillement:', filteredPlants);
     }
 
-    // Filtrage par arrosage
-    if (selectedWatering.length !== 0) {
-      filteredPlants = filteredPlants.filter((x) =>
-        selectedWatering.includes(x.arrosage)
+    if (selectedWatering.length) {
+      filteredPlants = filteredPlants.filter((plants) =>
+        selectedWatering.includes(plants.arrosage)
       );
-      console.log('Filtré par arrosage:', filteredPlants);
     }
 
-    // Filtrage par recherche utilisateur
-    filteredPlants = filteredPlants.filter((x) =>
-      x.nom.toLocaleLowerCase().includes(searchUser.toLocaleLowerCase())
-    );
+    if (searchUser) {
+      filteredPlants = filteredPlants.filter((plants) =>
+        plants.nom.toLowerCase().includes(searchUser.toLowerCase())
+      );
+    }
 
     return filteredPlants;
   }

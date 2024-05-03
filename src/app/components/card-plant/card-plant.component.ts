@@ -21,27 +21,36 @@ export class CardPlantComponent implements OnInit {
 
   getSunIcons(soleil: string): ('sun' | 'sun-fill')[] {
     switch (soleil) {
-      case 'Peu':
+      case 'PEU':
         return ['sun-fill', 'sun', 'sun'];
-      case 'Moyen':
+      case 'MOYEN':
         return ['sun-fill', 'sun-fill', 'sun'];
-      case 'Beaucoup':
+      case 'BEAUCOUP':
         return ['sun-fill', 'sun-fill', 'sun-fill'];
       default:
         return [];
     }
   }
 
-  getWateringIcons(arrosage: string): ('droplet' | 'droplet-fill')[] {
+  getWateringIcons(arrosage: number): ('droplet' | 'droplet-fill')[] {
     switch (arrosage) {
-      case '1':
+      case 1:
         return ['droplet-fill', 'droplet', 'droplet'];
-      case '2':
+      case 2:
         return ['droplet-fill', 'droplet-fill', 'droplet'];
-      case '3':
+      case 3:
         return ['droplet-fill', 'droplet-fill', 'droplet-fill'];
       default:
         return [];
     }
+    /* if (arrosageNumber === 1) {
+      return ['droplet-fill', 'droplet', 'droplet'];
+    } else if (arrosage === 2) {
+      return ['droplet-fill', 'droplet-fill', 'droplet'];
+    } else if (arrosage === 3) {
+      return ['droplet-fill', 'droplet-fill', 'droplet-fill'];
+    } else {
+      return [];
+    }*/
   }
 }

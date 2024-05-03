@@ -5,7 +5,7 @@
             <img *ngIf="plantsToDisplay.image" [src]="plantsToDisplay.image" [alt]="'Image de ' + plantsToDisplay.nom"
                 (error)="handleImageError($event)" class="custom-img-size mb-3">
 
-            <p class="card-text"><strong>Catégorie:</strong> {{ plantsToDisplay.categorie }}</p>
+            <p class="card-text"><strong>Catégorie:</strong> {{ plantsToDisplay.categorie.libelle }}</p>
             <p class="card-text"><strong>Soleil:</strong> {{ plantsToDisplay.soleil }}</p>
             <p class="card-text"><strong>Arrosage:</strong> {{ plantsToDisplay.arrosage }}</p>
         </div>

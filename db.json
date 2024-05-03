@@ -1,20 +1,12 @@
 {
   "plants": [
     {
-      "nom": "Anthurium, pot D12cm",
-      "soleil": "Moyen",
-      "arrosage": "2",
-      "categorie": "Plantes Fleuries",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0952000/952438_003.jpg",
-      "id": 952438
-    },
-    {
-      "id": 77390,
       "nom": "Anthurium: Pot 17cm petit modèle - Coloris variables",
-      "soleil": "Moyen",
+      "soleil": "Peu",
       "arrosage": "2",
       "categorie": "Plantes Fleuries",
-      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0077000/77390_010.jpg"
+      "image": "https://images.truffaut.com/media/catalog/product/cdn:///Articles/jpg/0077000/77390_010.jpg",
+      "id": 77390
     },
     {
       "id": 910762,

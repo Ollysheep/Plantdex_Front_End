@@ -2,7 +2,7 @@ export interface Plant {
   id: number;
   nom: string;
   soleil: string;
-  arrosage: string;
-  categorie: string;
+  arrosage: number;
+  categorie: { id: number; libelle: string };
   image: string;
 }

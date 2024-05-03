@@ -8,15 +8,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class FilterSideBarComponent {
   @Input() categoriesToDisplay!: string[];
   @Input() sunlightLevelsToDisplay!: string[]; // Ajout de la liste des niveaux d'ensoleillement
-  @Input() wateringToDisplay!: string[]; // Ajout de la liste des niveaux d'arrosage
+  @Input() wateringToDisplay!: number[]; // Ajout de la liste des niveaux d'arrosage
 
   @Output() categoriesToFilter = new EventEmitter<string[]>();
   @Output() sunlightLevelsToFilter = new EventEmitter<string[]>(); // Émetteur pour les niveaux d'ensoleillement
-  @Output() wateringToFilter = new EventEmitter<string[]>(); // Émetteur pour les niveaux d'arrosage
+  @Output() wateringToFilter = new EventEmitter<number[]>(); // Émetteur pour les niveaux d'arrosage
 
   checkedCategories: string[] = [];
   checkedSunlightLevels: string[] = []; // Tableau pour les niveaux d'ensoleillement
-  checkedWatering: string[] = []; // Tableau pour les niveaux d'arrosage
+  checkedWatering: number[] = []; // Tableau pour les niveaux d'arrosage
 
   onCheckedCategories(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -45,7 +45,7 @@ export class FilterSideBarComponent {
        * Lorqu'aucune catégorie n'est coché
        * -> On met toutes les catégories par défaut */
       if (this.checkedCategories.length === 0) {
-        this.checkedCategories = [...this.categoriesToDisplay];
+        //this.checkedCategories = [...this.categoriesToDisplay];
       }
     }
 
@@ -80,17 +80,17 @@ export class FilterSideBarComponent {
   // Fonction similaire pour les niveaux d'arrosage
   onCheckedWatering(event: Event) {
     const target = event.target as HTMLInputElement;
+    const valueAsNumber = parseInt(target.value); // Conversion de la valeur en nombre
 
     if (target.checked) {
       if (this.checkedWatering.length === this.wateringToDisplay.length) {
         this.checkedWatering = [];
       }
-      this.checkedWatering.push(target.value);
+      this.checkedWatering.push(valueAsNumber); // Utilisez valueAsNumber
     } else {
       this.checkedWatering = this.checkedWatering.filter(
-        (level) => level !== target.value
+        (level) => level !== valueAsNumber
       );
-
       if (this.checkedWatering.length === 0) {
         this.checkedWatering = [...this.wateringToDisplay];
       }

@@ -7,27 +7,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PlantsService {
+  apiurl = 'http://localhost:8080/api/plante';
   constructor(private http: HttpClient) {}
 
   getPlants(): Observable<Plant[]> {
-    return this.http.get<Plant[]>('http://localhost:3000/plants');
+    return this.http.get<Plant[]>(this.apiurl);
   }
 
   createNewPlant(plantToCreate: Plant): Observable<Plant> {
-    return this.http.post<Plant>('http://localhost:3000/plants', plantToCreate);
+    return this.http.post<Plant>(`${this.apiurl}`, plantToCreate);
   }
 
   deletePlant(plantId: number) {
-    return this.http.delete(`http://localhost:3000/plants/${plantId}`);
+    return this.http.delete(`${this.apiurl}/${plantId}`);
   }
 
   getPlantsById(plantId: number): Observable<Plant> {
     console.log('ID appelé: ', plantId);
-    return this.http.get<Plant>(`http://localhost:3000/plants/${plantId}`);
+    return this.http.get<Plant>(`${this.apiurl}/${plantId}`);
   }
 
   updatePlant(plantId: number, updatedPlant: Plant): Observable<any> {
-    const apiUrl = `http://localhost:3000/plants/${plantId}`;
-    return this.http.put(apiUrl, updatedPlant);
+    return this.http.put(`${this.apiurl}/${plantId}`, updatedPlant);
   }
 }

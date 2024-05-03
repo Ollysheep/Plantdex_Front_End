@@ -27,7 +27,7 @@
                                 <img [src]="plant.image" (error)="handleImageError()" [alt]="'Image ' + plant.nom"
                                     class="img-thumbnail" />
                             </td>
-                            <td>{{ plant.categorie }}</td>
+                            <td>{{ plant.categorie.libelle }}</td>
                             <td>{{ plant.soleil }}</td>
                             <td>{{ plant.arrosage }}</td>
                             <td>
